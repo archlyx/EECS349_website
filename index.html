@@ -2,37 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Bootswatch: Journal</title>
+    <title>Journal Decision</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="stylesheet" href="./bootstrap.css" media="screen">
-    <link rel="stylesheet" href="../assets/css/bootswatch.min.css">
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="../bower_components/html5shiv/dist/html5shiv.js"></script>
-      <script src="../bower_components/respond/dest/respond.min.js"></script>
-    <![endif]-->
-    <script>
-
-     var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-23019901-1']);
-      _gaq.push(['_setDomainName', "bootswatch.com"]);
-        _gaq.push(['_setAllowLinker', true]);
-      _gaq.push(['_trackPageview']);
-
-     (function() {
-       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-     })();
-
-    </script>
+    <link rel="stylesheet" href="./css/bootstrap.css" media="screen">
+    <link rel="stylesheet" href="./css/bootswatch.min.css">
+    <link rel="stylesheet" href="./css/content.css">
   </head>
+  
   <body>
-    <div class="navbar navbar-default navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="../" class="navbar-brand">Bootswatch</a>
+          <a href="../" class="navbar-brand">Journal Decision</a>
           <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -41,30 +23,140 @@
         </div>
         <div class="navbar-collapse collapse" id="navbar-main">
           <ul class="nav navbar-nav">       
-            <li>
-              <a href="../help/">Help</a>
-            </li>
-            
-            <li>
-              <a href="http://news.bootswatch.com">Blog</a>
-            </li>
-        
+            <li> <a href="#overview">Overview</a> </li>     
+            <li> <a href="#data">Data</a> </li>            
+            <li> <a href="#experiment">Experiment</a> </li>            
+            <li> <a href="#results">Results</a> </li>          
+            <li> <a href="#conclusion">Conclusion</a> </li>          
           </ul>
 
         </div>
       </div>
     </div>
 
-    <div class="bs-component">
-      <div class="jumbotron">
-        <h1>Jumbotron</h1>
-        <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <p><a class="btn btn-primary btn-lg">Learn more</a></p>
+    <div class="container">
+      
+      <div class="page-header">
+        <div class="row">
+          <div class="col-lg-5">
+            <img src="img/cover.png" width=350>
+          </div>
+          <div class="col-lg-7">
+            <h1>Journal Decision</h1>
+            <p class="lead">
+              Using Machine Learning Techniques
+            </p>
+            <br>
+            <p class="content">
+              EECS 349 - Machine Learning - Spring 2015
+            </p>
+            <ul class="content">
+              <li> <a href="mailto:shuangping-liu@u.northwestern.edu">Shuangping Liu</a> </li>
+              <li> <a href="mailto:lizeng2016@u.northwestern.edu">Li Zeng </a> </li>
+              <li> <a href="mailto:yuzhou2016@u.northwestern.edu">Yu Zhou </a> </li>
+            </ul>
+            <br>
+            <a href="report.pdf" class="btn btn-primary">View Full Report</a>
+          </div>
+        </div>
       </div>
-    </div>
+      
+      <!-- Overview
+      ================================================== -->
+      <div class="bs-docs-section clearfix">
+        <a class="anchor" id="overview"></a>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="heading">
+              <h1>Overview</h1>
+              <p class="content">
+                One of the toughest choices that many researchers have to face
+                during their academic career is to find an appropriate journal
+                or conference to publish their works. Besides the impact of the
+                journals, many other factors are also seriously considered by
+                researchers before submitting their manuscripts, such as the
+                correlation between their research fields and that of the journal,
+                the researcher’s publication history on this journal, the popularity
+                of the research topics in this journal, etc. It would make this
+                choice much easier if the rationality of submitting to a certain
+                journal could be automatically estimated and predicted by machine
+                based on the former publications in this journal. More importantly,
+                this system can also help reduce the workload of journal editors if
+                a paper can be automatically graded and recommended beforehand. 
+              </p>
+              
+              <p class="content">
+                Herein we propose to start from a single journal, and build up
+                a model to characterize the rationality to publish a given paper on PRL.
+                The data will be acquired by directly crawling the information of the
+                papers from the American Physics Society (APS) website in the past 20 years,
+                such as titles, authors, keywords, contents of abstract, citations,
+                etc. Based on this information, the features of this model will include
+                at least the research objects, methods, authors, citation and publication year.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>   
+      
+      <!-- Data
+      ================================================== -->
+      <div class="bs-docs-section clearfix">
+        <a class="anchor" id="data"></a>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="heading">
+              <h1>Data</h1>
+            </div>
+          </div>
+        </div>
+      </div>   
+      
+      <!-- Experiments
+      ================================================== -->
+      <div class="bs-docs-section clearfix">
+        <a class="anchor" id="experiments"></a>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="heading">
+              <h1>Experiments</h1>
+            </div>
+          </div>
+        </div>
+      </div>   
+      
+      <!-- Results
+      ================================================== -->
+      <div class="bs-docs-section clearfix">
+        <a class="anchor" id="results"></a>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="heading">
+              <h1>Results</h1>
+            </div>
+          </div>
+        </div>
+      </div>   
+      
+      <!-- Conclusion
+      ================================================== -->
+      <div class="bs-docs-section clearfix">
+        <a class="anchor" id="conclusion"></a>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="heading">
+              <h1>Conclusion</h1>
+            </div>
+          </div>
+        </div>
+      </div>   
+      
+    </div>   
+    
+         
 
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../assets/js/bootswatch.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/bootswatch.js"></script>
   </body>
 </html>
