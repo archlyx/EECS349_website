@@ -25,7 +25,7 @@
           <ul class="nav navbar-nav">       
             <li> <a href="#overview">Overview</a> </li>     
             <li> <a href="#data">Data</a> </li>            
-            <li> <a href="#experiment">Experiment</a> </li>            
+            <li> <a href="#experiments">Experiments</a> </li>            
             <li> <a href="#results">Results</a> </li>          
             <li> <a href="#conclusion">Conclusion</a> </li>          
           </ul>
@@ -122,29 +122,68 @@
                   These two areas certainly have mutually interested topics but they study different aspects of these
                   topics. Hence, this makses this project very interesting and useful to see whether the machine can learn
                   the features of these two closely related but different research subjects. 
-                  
+                </p>
+                
+                <p class="content">
                   We particularly chose Journal of Chemistry Society (JACS) and Advanced Materials (A&M) because both are top 
                   and prestigious journals with high impact. Therefore, the articles from these two journals will be the
                   most indecative ones to show the research trends of the past decades. The data were clawed from the
-                  wedsites and stored as .json datafile. An example were chosen from A&M and shown below:<br>
-                  <br>
-                  "info" : "Article first published online: 23 DEC 2014 | DOI: 10.1002/adma.201404849",<br>
-                  "doi" : "10.1002/adma.201404849",<br>
-                  "author" : "Peter Tseng, Jonathan Lin, Keegan Owsley, Janay Kong, Anja Kunze, Coleman Murray and Dino
-                  Di Carlo",<br>
-                  "title" : "Flexible and Stretchable Micromagnet Arrays for Tunable Biointerfacing (pages
-                  1083–1089)",<br>
-                  "year" : "2015",<br>
-                  "type" : "Communications",<br>
-                  "abs" : "A process to surface pattern polydimethylsiloxane (PDMS) with ferromagnetic structures
+                  wedsites and stored as .json datafile. An example were chosen from A&M and shown below:
+                </p>
+                <table class="table table-striped table-hover ">
+                  <thead>
+                    <tr>
+                      <th>data</th>
+                      <th>Content</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="info">
+                      <td>info</td>
+                      <td>Article first published online: 23 DEC 2014 | DOI: 10.1002/adma.201404849</td>
+                    </tr>
+                    <tr class="success">
+                      <td>doi</td>
+                      <td>10.1002/adma.201404849</td>
+                    </tr>
+                    <tr class="info">
+                      <td>author</td>
+                      <td>Peter Tseng, Jonathan Lin, Keegan Owsley, Janay Kong, Anja Kunze, Coleman Murray and Dino Di Carlo</td>
+                    </tr>
+                    <tr class="success">
+                      <td>title</td>
+                      <td>Flexible and Stretchable Micromagnet Arrays for Tunable Biointerfacing (pages 1083–1089)</td>
+                    </tr>
+                    <tr class="info">
+                      <td>year</td>
+                      <td>2015</td>
+                    </tr>
+                    <tr class="success">
+                      <td>type</td>
+                      <td>Communications</td>
+                    </tr>
+                    <tr class="info">
+                      <td>abstract</td>
+                      <td>
+                        A process to surface pattern polydimethylsiloxane (PDMS) with ferromagnetic structures
                         of varying sizes (micrometer to millimeter) and thicknesses (>70 μm) is developed. Their
                         flexibility and magnetic reach are utilized to confer dynamic, additive properties to a variety
                         of substrates, such as coverslips and Eppendorf tubes. It is found that these substrates can
                         generate additional modes of magnetic droplet manipulation, and can tunably steer magnetic-cell
-                        organization.",<br>
-                  "affi" : "Department of Bioengineering, University of California, Los Angeles, Los Angeles,
-                         California, USA$$"<br>
-                  <br>
+                        organization.
+                      </td>
+                    </tr>
+                    <tr class="success">
+                      <td>affiliation</td>
+                      <td>
+                        Department of Bioengineering, University of California, Los Angeles, Los Angeles,
+                        California, USA$$
+                      </td>
+                    </tr>
+                  </tbody>
+                </table> 
+                
+                <p class="content">
                   As shown above, a journal infomation usually comes with several indexes and information for reader to
                   quickly locate and learn the topics of a publication. The most informative attributes are tilte and
                   abstract. Therefore, by counting the frequency of the "key words" used in titles and abstracts, we can
@@ -152,9 +191,7 @@
 
                   Angewandate Chemie is also one of the top journals in chemstry area, and one of the
                   competing journals to JACS. We clawed the data from its website as well. And they will be used as test
-                  samples for machine to make a prediction.
-                  
-                   
+                  samples for machine to make a prediction.                
                </p>
             </div>
           </div>
