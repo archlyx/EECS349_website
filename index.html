@@ -57,7 +57,7 @@
               <li> <a href="mailto:yuzhou2016@u.northwestern.edu">Yu Zhou </a> </li>
             </ul>
             <br>
-            <a href="report.pdf" class="btn btn-primary">View Full Report</a>
+            <a href="report.pdf" class="btn btn-success">View Full Report</a>
           </div>
         </div>
       </div>
@@ -92,10 +92,11 @@
                 that the machine can distinguish research subjects between materials science and chemisty.
                 The original dataset will be acquired by directly crawling the information of the
                 papers from the American Chemistry Society (ACS) for Journal of Chemistry Society (JACS)
-                and Wiley Publication Group for Advanced Materials (A&M) website in the past 10 years (2005~2015).
+                and Wiley Publication Group for Advanced Materials (A&amp;M) website in the past 10 years (2005~2015).
                 These information such as titles, authors, contents of abstract, affiation, publication year
                 etc, will be treated as input attributes for machine to learn and test. The idea of this project will be 
-                similar to typical "Bags of words" model, we will process the tile and abstract to study the fequence of representative words. 
+                similar to typical bag-of-words approach, we will process the title and abstract to study the 
+                importance of representative word with respect to the journals. 
                 The machine learning methods that we are going to employ are Naive Bayes, Support vector
                 machines, and decision trees. 
               </p>
@@ -125,10 +126,11 @@
                 </p>
                 
                 <p class="content">
-                  We particularly chose Journal of Chemistry Society (JACS) and Advanced Materials (A&M) because both are top 
+                  We particularly chose <em>Journal of Chemistry Society (JACS)</em>
+                  and <em>Advanced Materials(A&amp;M)</em> because both are top 
                   and prestigious journals with high impact. Therefore, the articles from these two journals will be the
-                  most indecative ones to show the research trends of the past decades. The data were clawed from the
-                  wedsites and stored as .json datafile. An example were chosen from A&M and shown below:
+                  most indecative ones to show the research trends of the past decades.
+                  An example were chosen from <em>A&amp;M</em> and shown below:
                 </p>
                 <table class="table table-striped table-hover ">
                   <thead>
@@ -138,31 +140,31 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="info">
+                    <tr>
                       <td>info</td>
                       <td>Article first published online: 23 DEC 2014 | DOI: 10.1002/adma.201404849</td>
                     </tr>
-                    <tr class="success">
+                    <tr>
                       <td>doi</td>
                       <td>10.1002/adma.201404849</td>
                     </tr>
-                    <tr class="info">
+                    <tr>
                       <td>author</td>
                       <td>Peter Tseng, Jonathan Lin, Keegan Owsley, Janay Kong, Anja Kunze, Coleman Murray and Dino Di Carlo</td>
                     </tr>
-                    <tr class="success">
+                    <tr>
                       <td>title</td>
                       <td>Flexible and Stretchable Micromagnet Arrays for Tunable Biointerfacing (pages 1083–1089)</td>
                     </tr>
-                    <tr class="info">
+                    <tr>
                       <td>year</td>
                       <td>2015</td>
                     </tr>
-                    <tr class="success">
+                    <tr>
                       <td>type</td>
                       <td>Communications</td>
                     </tr>
-                    <tr class="info">
+                    <tr>
                       <td>abstract</td>
                       <td>
                         A process to surface pattern polydimethylsiloxane (PDMS) with ferromagnetic structures
@@ -173,7 +175,7 @@
                         organization.
                       </td>
                     </tr>
-                    <tr class="success">
+                    <tr>
                       <td>affiliation</td>
                       <td>
                         Department of Bioengineering, University of California, Los Angeles, Los Angeles,
@@ -187,12 +189,17 @@
                   As shown above, a journal infomation usually comes with several indexes and information for reader to
                   quickly locate and learn the topics of a publication. The most informative attributes are tilte and
                   abstract. Therefore, by counting the frequency of the "key words" used in titles and abstracts, we can
-                  teach machine to learn what are the most related topics to either chemisty and materials science. 
-
-                  Angewandate Chemie is also one of the top journals in chemstry area, and one of the
-                  competing journals to JACS. We pulled the data from its website as well. And they will be used as test
+                  teach machine to learn what are the most related topics to either chemisty and materials science.
+                </p>
+                <p class="content"> 
+                  <em>Angewandate Chemie</em> is also one of the top journals in chemstry area, and one of the
+                  competing journals to <em>JACS</em>. We pulled the data from its website as well. And they will be used as test
                   samples for machine to make a prediction.                
                </p>
+               <p class="content">
+                  Out datasets include 32268 papers in <em>JACS</em>, 9008 papers in <em>A&amp;M</em> and
+                  21887 papers in <em>Angewandte Chemie</em> ranging from 2005 to 2015.
+                </p>
             </div>
           </div>
         </div>
@@ -214,14 +221,15 @@
                  of the words by considering the appearance of a certain word in both the given papers and the general corpus.
                  In bag-of-wods approach, each title and abstract are vectorized to a sparse vector filled with the values
                  given by TF-IDF transform as an instance of training set. The target value of each instance is
-                 the journal type (e.g., <em>JACS</em> corresponds to 0 and <em>Advanced Materials</em> is 1 in our case).
+                 the journal type (e.g., <em>JACS</em> corresponds to 0 and <em>A&amp;M</em> is 1 in our case).
                </p>
                <p class="content">  
                  80% of our data were randomly chosen as the training set and the rest 20% were used as test set.
                  10 fold cross validation was performed for the training set to check how well the machine learning model
                  can be generalized to independent dataset. The papers in the journal <em>Angewandte Chemie</em>
-                 were used as a independent dataset to test our model. We use <strong>Naive Bayes</strong>,
-                 <strong>Supporting Vector Machine</strong> and <strong>Random Forests</strong> as the machine learning
+                 were used as a independent dataset to test our model, since it is as prestigious as <em>JACS</em>
+                 in the chemistry field. Herein we use <strong>Naive Bayes</strong>,
+                 <strong>Supporting Vector Machine</strong> and <strong>Decision Tree</strong> as the machine learning
                  techniques in order to obtain the best results. 
                </p>
             </div>
@@ -238,39 +246,116 @@
             <div class="heading">
               <h1>Results</h1>
               <p class="content">
-                 Here are the results from three learning methods. The accuracy of each cross validation, and the whole
-                 training dataset, and test sets were reported as below. 
+                 We apply the three machine learning methods to two different datasets:
               </p>
-                <table class="table table-striped table-hover ">
-                  <thead>
-                    <tr>
-                      <th>Methods</th>
-                      <th>Training Set</th>
-                      <th>Test Set</th>
-                      <th><em>Angewandte Chemie</em> Test</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="info">
-                      <td>Naive Bayes</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr class="success">
-                      <td>Linear SVC</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr class="info">
-                      <td>Random Forest</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>                                            
-                    </tr>
-                  </tbody>
-                </table> 
+              <ul class="content">
+                <li> Including only titles information </li>
+                <li> Including both titles and abstracts information </li>
+              </ul>
+              <h3>Dataset with only titles</h3>
+              <table class="table table-striped table-hover ">
+                <thead>
+                  <tr>
+                    <th>Methods (Title only)</th>
+                    <th>Training Set</th>
+                    <th>Test Set</th>
+                    <th><em>Angewandte Chemie</em> Test</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="success" id="nb-title">
+                    <td>Naive Bayes</td>
+                    <td>0.9666</td>
+                    <td>0.9484</td>
+                    <td>0.8479</td>
+                  </tr>
+                  <tr class="success" id="svc-title">
+                    <td>Linear SVC</td>
+                    <td>0.9011</td>
+                    <td>0.9004</td>
+                    <td>0.7806</td>
+                  </tr>
+                  <tr class="success" id="dt-title">
+                    <td>Decision Tree</td>
+                    <td>0.9967</td>
+                    <td>0.9964</td>
+                    <td>0.1010</td>                                            
+                  </tr>
+                </tbody>
+              </table> 
+              <p class="content">
+                <strong>Naive Bayes</strong>: Naive Bayes gives the most reasonable
+                results among the three methods. The model derived from the training
+                set not only fit the test set well, but also gives good prediction
+                for the <em>Angewandte Chemie</em> test. Around
+                <a href="#nb-title">85%</a> of the papers of
+                <em>Angewandte Chemie</em> are classified to chemistry. 
+              </p>
+              <p class="content">
+                <strong>SVM</strong>: Specifically we are using SVM with linear kernel
+                and minimization of the squared hinge loss (
+                <a href="http://scikit-learn.org/stable/auto_examples/svm/plot_iris.html">
+                LinearSVC</a> in <a href="http://scikit-learn.org/">scikit-learn</a>).
+                LinearSVC is very sensitive to the regularization parameter
+                <strong>C</strong>. Large <strong>C</strong> will result in overfitting
+                of the training set and very poor accuracy for <em>Angewandte Chemie</em>
+                test. In our experiment, we use <strong>C</strong> = 0.004. Around
+                <a href="#svc-title">78%</a> of
+                the papers in <em>Angewandte Chemie</em> are identified as acceptable to
+                <em>JACS</em>.
+              </p>
+              <p class="content">
+                <strong>Decision Tree</strong>: We attempt to avoid overfitting problem
+                by limiting the maximum depth of the decision tree. However, it does not
+                improve much of our results: Decision Tree can fit perfectly with 
+                training set and test set, while it only put <a href="#dt-title">10%</a> of the
+                <em>Angwandte Chemie</em> papers to the correct class.
+              </p>
+              <h3>Dataset with both titles and abstracts</h3>
+              <table class="table table-striped table-hover ">
+                <thead>
+                  <tr>
+                    <th>Methods (Title &amp; Abstract)</th>
+                    <th>Training Set</th>
+                    <th>Test Set</th>
+                    <th><em>Angewandte Chemie</em> Test</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="danger" id="nb-abs">
+                    <td>Naive Bayes</td>
+                    <td>0.8955</td>
+                    <td>0.8838</td>
+                    <td>0.9430</td>
+                  </tr>
+                  <tr class="danger" id="svc-abs">
+                    <td>Linear SVC</td>
+                    <td>0.9589</td>
+                    <td>0.9529</td>
+                    <td>0.8718</td>
+                  </tr>
+                  <tr class="danger" id="dt-abs">
+                    <td>Decision Tree</td>
+                    <td>0.9966</td>
+                    <td>0.9962</td>
+                    <td>0.1007</td>                                            
+                  </tr>
+                </tbody>
+              </table>
+              <p class="content">
+                With both titles and abstracts included in the dataset, the
+                prediction accuracies for the <em>Angewandte Chemie</em> set
+                of <abbr title="Naive Bayes">NB</abbr> and LinearSVC are
+                improved (<abbr title="Naive Bayes">NB</abbr>: <a href="#nb-abs">94%</a>, 
+                LinearSVC: <a href="#svc-abs">87%</a>). For <abbr title="Naive Bayes">NB</abbr>,
+                the accuracy of the training set and test set is lower than before, since
+                more information is taken into consideration for the classification.
+                It is likely that some words in the abstract can be both included
+                in <em>JACS</em> and <em>A&amp;M</em>. For LinearSVC, one can
+                adjust the parameter <strong>C</strong> to obtain better accuracy
+                for all the datasets. For <abbr title="Decision tree">DT</abbr>,
+                the accuracy of all the datasets are almost the same as before.
+              </p> 
             </div>
           </div>
         </div>
@@ -284,14 +369,18 @@
           <div class="col-lg-12">
             <div class="heading">
               <h1>Conclusion</h1>
-              <p class="content">
-                 As we can see from the above results, all three methods give reasonable results but the Neive Byase
-                 performs the best: XX%.
+              <p class="content text-success">
+                 In conclusion, <abbr title="Naive Bayes">NB</abbr> and Linear SVC perform well
+                 in predicting the appropriate journal to submit, whild <abbr title="Decision Tree">
+                 DT</abbr> is not suitable for this type of problem.
+              </p>
 
-                 The future related to this project could be including more attributes. For example, the "key words" can
-                 be included and treated with similar methods. "Year" is anthor important attribute to study the
-                 trending of each research area, and the correlations between two journals. And finally, we can
-                 certainly include more dataset by clawing data since a few decades ago, and expending the research
+              <p class="content">
+                 The futurework of this project could be including more attributes. For example, Keywords can
+                 be included and treated with similar methods. Year is anthor important attribute to study the
+                 trending of each research area, and the correlations between two journals. More practical test
+                 datasets can also be introduced to verify our machine learning model. Additionally, we can
+                 certainly include more dataset by extracting data since a few decades ago, and expending the research
                  subjects to physics or biology, and some sub-areas such as organic chemistry vs. inorganic chemistry.
               </p>
             </div>
