@@ -127,7 +127,7 @@
 % *** GRAPHICS RELATED PACKAGES ***
 %
 \ifCLASSINFOpdf
-  % \usepackage[pdftex]{graphicx}
+  \usepackage[pdftex]{graphicx}
   % declare the path(s) where your graphic files are
   % \graphicspath{{../pdf/}{../jpeg/}}
   % and their extensions so you won't have to specify these with
@@ -549,13 +549,13 @@ We particularly chose Journal of Chemistry Society (JACS) and Advanced Materials
     \end{center}
 \end{table}
 
-The journal information usually comes with several indexes and information for reader to quickly locate and learn the topics of a publication. The most informative attributes are tilte and abstract. Therefore, by counting the frequency of the "key words" used in titles and abstracts, we can teach machine to learn what are the most related topics to either chemisty and materials science. Angewandate Chemie is also one of the top journals in chemstry area, and one of the competing journals to JACS. We pulled the data from its website as well. And they will be used as test samples for machine to make a prediction.
+The journal information usually comes with several indexes and information for reader to quickly locate and learn the topics of a publication. The most informative attributes are title and abstract. Therefore, by counting the frequency of the "key words" used in titles and abstracts, we can teach machine to learn what are the most related topics to either chemisty and materials science. Angewandate Chemie is also one of the top journals in chemstry area, and one of the competing journals to JACS. We pulled the data from its website as well. And they will be used as test samples for machine to make a prediction.
 
 Out datasets include 32268 papers in JACS, 9008 papers in A\&M and 21887 papers in Angewandte Chemie ranging from 2005 to 2015.
 
 \section{Experiments}
 
-The python machine learning package scikit-learn was employed to classify the documents with a bag-of-words approach. We started with estimating how frequently the words show in the titles and abstracts of a certain journal. Term frequency?inverse document frequency (TF-IDF) was therefore used to measure the importance of the words by considering the appearance of a certain word in both the given papers and the general corpus. In bag-of-wods approach, each title and abstract are vectorized to a sparse vector filled with the values given by TF-IDF transform as an instance of training set. The target value of each instance is the journal type (e.g., JACS corresponds to 0 and A\&M is 1 in our case).
+The python machine learning package scikit-learn was employed to classify the documents with a bag-of-words approach. We started with estimating how frequently the words show in the titles and abstracts of a certain journal. Term frequency inverse document frequency (TF-IDF) was therefore used to measure the importance of the words by considering the appearance of a certain word in both the given papers and the general corpus. In bag-of-words approach, each title and abstract are vectorized to a sparse vector filled with the values given by TF-IDF transform as an instance of training set. The target value of each instance is the journal type (e.g., JACS corresponds to 0 and A\&M is 1 in our case).
 
 80\% of our data were randomly chosen as the training set and the rest 20\% were used as test set. 10 fold cross validation was performed for the training set to check how well the machine learning model can be generalized to independent dataset. The papers in the journal Angewandte Chemie were used as a independent dataset to test our model, since it is as prestigious as JACS in the chemistry field. Herein we use Naive Bayes, Supporting Vector Machine and Decision Tree as the machine learning techniques in order to obtain the best results.
 
@@ -564,7 +564,7 @@ We apply the three machine learning methods to two different datasets:
 
 \begin{itemize}
     \item{Including only titles information}
-    \item{Including both titles and abstracts information}
+    \item{Including both titles and abstracts information. The title and abstract are combined for vectorization.}
 \end{itemize}
 
 \subsection{Dataset with only titles}
@@ -588,10 +588,17 @@ The results are shown in Table \ref{tab:acc-title}.
 \end{table}
 
 \subsubsection{Naive Bayes}
-Naive Bayes gives the most reasonable results among the three methods. The model derived from the training set not only fit the test set well, but also gives good prediction for the Angewandte Chemie test. Around 85\% of the papers of Angewandte Chemie are classified to chemistry.
+Naive Bayes gives the most reasonable results among the three methods. Specifically we are using multinomial NB classifier with additive smoothing parameter as 1.0. The model derived from the training set not only fit the test set well, but also gives good prediction for the Angewandte Chemie test. Around 85\% of the papers of Angewandte Chemie are classified to chemistry.
 
 \subsubsection{SVM}
-Specifically we are using SVM with linear kernel and minimization of the squared hinge loss ( LinearSVC in scikit-learn). LinearSVC is very sensitive to the regularization parameter C. Large C will result in overfitting of the training set and very poor accuracy for Angewandte Chemie test. In our experiment, we use C = 0.004. Around 78\% of the papers in Angewandte Chemie are identified as acceptable to JACS.
+Specifically we are using SVM with linear kernel and minimization of the squared hinge loss ( LinearSVC in scikit-learn). LinearSVC is very sensitive to the regularization parameter C. Figure \ref{fig:sensitivity} shows the sensitivity of the parameter C. The accuracy of training set and AC set is oppositely related. Thus we can find the optimized value of C. Large C will result in overfitting of the training set and very poor accuracy for Angewandte Chemie test. In our experiment, we use C = 0.004. Around 78\% of the papers in Angewandte Chemie are identified as acceptable to JACS.
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=3.4in]{SVM_C}
+\caption{The sensitivity of LinearSVC to regularization parameter}
+\label{fig:sensitivity}
+\end{figure}
 
 \subsubsection{Decision Tree}
 Decision Tree: We attempt to avoid overfitting problem by limiting the maximum depth of the decision tree. However, it does not improve much of our results: Decision Tree can fit perfectly with training set and test set, while it only put 10\% of the Angwandte Chemie papers to the correct class.
@@ -633,7 +640,7 @@ The performance of the three machine learning methods are shown in Table \ref{ta
             \hline
             Linear SVC & 0.197 \\
             \hline
-            Decision Tree &  \\
+            Decision Tree &  24.663\\
             \hline
         \end{tabular}
     \end{center}
@@ -674,13 +681,6 @@ The future work of this project could be including more attributes. For example,
 % <OR> manually copy in the resultant .bbl file
 % set second argument of \begin to the number of references
 % (used to reserve space for the reference number labels box)
-\begin{thebibliography}{1}
-
-\bibitem{IEEEhowto:kopka}
-H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
-  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
-
-\end{thebibliography}
 
 
 
